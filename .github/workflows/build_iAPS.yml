@@ -2,7 +2,9 @@ name: 4. Build iAPS
 run-name: Build iAPS (${{ github.ref_name }})
 on:
   workflow_dispatch:
-  
+  schedule:
+    - cron: "0 8 * * 3" # Checks for updates at 08:00 UTC every Wednesday
+    - cron: "0 6 1 * *" # Builds the app on the 1st of every month at 06:00 UTC
   # this will trigger this workflow for any push to any branch that this workflow is
   # active on, *but*, the auto_build_check job will check to see if this branch is
   # enabled *for* being auto built, and short circuit the process if so.
